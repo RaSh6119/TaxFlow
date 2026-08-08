@@ -1,8 +1,3 @@
-/* ============================================================
-   TaxFlow — App State
-   Tiny pub/sub store. Holds current user/role, nav history
-   (for the "return to where you were" banner), and toasts.
-   ============================================================ */
 (function (App) {
   const S = {};
   const listeners = [];

@@ -1,14 +1,8 @@
-/* ============================================================
-   TaxFlow — Shared UI Components (Challenges 04, 05, 06, 08, 10)
-   Render functions return HTML strings; interactivity is wired
-   via data-action delegation in app.js.
-   ============================================================ */
 (function (App) {
   const C = {};
   const U = App.Util;
   App.Pages = App.Pages || {};
 
-  // ---------- Sidebar navigation, adapts per active role (Challenge 05) ----------
   C.navForRole = (roleId, user) => {
     const myReturnId = (user && ((user.returnIds && user.returnIds[0]) || user.personalReturnId)) || "r_maria";
     const client = [
@@ -29,7 +23,6 @@
     return roleId.startsWith("client") ? client : staff;
   };
 
-  // ---------- Topbar / Sidebar shell ----------
   C.shell = (routeCtx, contentHtml) => {
     const S = App.State, D = App.Data;
     const user = S.currentUser();
@@ -92,7 +85,6 @@
     </header>
   `;
 
-  // ---------- Breadcrumbs (Challenge 04 — orientation) ----------
   C.breadcrumbs = (routeCtx) => {
     const crumbs = routeCtx.crumbs || [{ label: routeCtx.title || "TaxFlow" }];
     return `
@@ -106,7 +98,6 @@
     `;
   };
 
-  // ---------- "Continue where you left off" banner (Challenge 04) ----------
   C.backBanner = (routeCtx) => {
     const S = App.State;
     const lw = S.state.lastWorkflow;
@@ -123,7 +114,6 @@
     `;
   };
 
-  // ---------- Role switcher dropdown (Challenge 05) ----------
   C.roleSwitcher = (user, roleCtx, hasDualRole) => {
     const S = App.State;
     const open = S.state.roleMenuOpen;
@@ -163,8 +153,6 @@
     `;
   };
 
-  // ---------- Field affordance row (Challenge 08, reused in Challenge 01/10) ----------
-  // state: ai_extracted | verified | locked | needs_review | editable(plain)
   C.fieldChip = (state) => {
     const map = {
       ai_extracted: `<span class="field-chip chip-ai">${U.icon("sparkle")} AI-extracted</span>`,
@@ -203,7 +191,6 @@
     </div>
   `;
 
-  // ---------- AI panel (Challenge 10) ----------
   C.aiPanel = (ai, opts) => {
     opts = opts || {};
     if (!ai) return "";
@@ -237,7 +224,6 @@
     `;
   };
 
-  // ---------- Linked items panel (Challenge 04 — connected objects) ----------
   C.linkedPanel = (title, items) => `
     <div class="linked-panel card-pad">
       <div class="h3 mb-12">${U.esc(title)}</div>
@@ -255,7 +241,6 @@
     </div>
   `;
 
-  // ---------- Status pipeline mini-visual (Challenge 06) ----------
   C.pipelineViz = (statusId) => {
     const steps = ["not_started","gathering_docs","in_preparation","in_review","ready_to_sign","filed","accepted"];
     const s = App.Data.getStatus(statusId);
@@ -267,7 +252,6 @@
     `;
   };
 
-  // ---------- Fake document page preview (used by traceability + modal) ----------
   C.docPageViz = (doc, region, opts) => {
     opts = opts || {};
     const lines = ["w80","w60","w40","w30","w60","w80","w40"];
@@ -285,7 +269,6 @@
     `;
   };
 
-  // ---------- Global modal (doc preview / field edit / AI correction) ----------
   C.modal = () => {
     const S = App.State;
     const m = S.state.modal;

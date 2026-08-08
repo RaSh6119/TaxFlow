@@ -1,12 +1,6 @@
-/* ============================================================
-   TaxFlow — Mock Data Layer
-   Everything in this file is fabricated sample data standing in
-   for a real backend, document-extraction pipeline, and AI model.
-   ============================================================ */
 (function (App) {
   const D = {};
 
-  // ---------- Users & Roles ----------
   D.roles = [
     { id: "client_individual", label: "Client — Individual Taxpayer", group: "client" },
     { id: "client_business", label: "Client — Business Owner", group: "client" },
@@ -32,10 +26,6 @@
   D.getUser = (id) => D.users.find(u => u.id === id);
   D.getRoleMeta = (id) => D.roles.find(r => r.id === id);
 
-  // ---------- Statuses (single shared model, audience-aware copy) ----------
-  // Order = pipeline order. `owner` = who must act next. `blocking` is a
-  // separate flag on the return itself, not a status, per the design note
-  // that status and "is something blocking us" are different questions.
   D.statuses = [
     { id: "not_started",     label: "Not Started",          owner: "firm",   color: "slate",  step: 0 },
     { id: "gathering_docs",  label: "Gathering Documents",  owner: "client", color: "amber",  step: 1 },
@@ -48,7 +38,6 @@
   ];
   D.getStatus = (id) => D.statuses.find(s => s.id === id);
 
-  // ---------- Documents (source pool used everywhere, incl. Challenge 09 scale) ----------
   const DOC_TYPES = [
     { type: "W-2", pages: 1 }, { type: "1099-NEC", pages: 1 }, { type: "1099-DIV", pages: 2 },
     { type: "1099-INT", pages: 1 }, { type: "1099-B", pages: 3 }, { type: "1098 Mortgage Interest", pages: 1 },
@@ -76,14 +65,13 @@
         pages: dt.pages,
         uploadedBy: i % 4 === 0 ? "firm" : "client",
         uploadedAt: `2026-0${1 + ((i + seedOffset) % 3)}-${String(day).padStart(2, "0")}`,
-        status, // extracted | needs_review | reviewed
+        status,
         sizeKb: 80 + ((i * 37 + seedOffset) % 900),
       });
     }
     return docs;
   }
 
-  // ---------- Flagship return: Rahul Shetty (individual, 1040) — deep traceability data ----------
   D.returns = [];
   D.documents = [];
   D.fields = [];
@@ -91,7 +79,6 @@
   D.threads = [];
   D.tasks = [];
 
-  // Rahul's documents (hand-authored, small set, richly linked for Challenge 01)
   const mariaDocs = [
     { id: "doc_w2_acme", returnId: "r_maria", name: "W-2 — Acme Robotics Inc.", type: "W-2", folder: "Income", pages: 1, uploadedBy: "client", uploadedAt: "2026-01-22", status: "reviewed", sizeKb: 210 },
     { id: "doc_w2_globex", returnId: "r_maria", name: "W-2 — Globex Contracting (part-year)", type: "W-2", folder: "Income", pages: 1, uploadedBy: "client", uploadedAt: "2026-01-24", status: "reviewed", sizeKb: 198 },
@@ -103,7 +90,6 @@
   ];
   D.documents.push(...mariaDocs, ...makeDocs("r_maria", "Rahul Shetty", 14, 1));
 
-  // Rahul's return fields with full traceability + AI metadata (Challenge 01, 08, 10)
   D.fields.push(
     {
       id: "f_wages", returnId: "r_maria", form: "Form 1040", line: "Line 1a — Wages, salaries, tips",
@@ -160,7 +146,6 @@
     }
   );
 
-  // AI outputs tied to specific fields (Challenge 10)
   D.aiOutputs.push(
     {
       fieldId: "f_dividends",
@@ -197,7 +182,6 @@
     }
   );
 
-  // ---------- Messages / Threads (Challenge 02) ----------
   D.threads.push(
     {
       id: "th_div_question", returnId: "r_maria", subject: "Question about your Schwab 1099-DIV",
@@ -223,10 +207,8 @@
     }
   );
 
-  // ---------- Tasks (Challenge 07 dashboard) ----------
   const TASK_TYPES = ["Review extracted fields", "Follow up on missing document", "Client call scheduled", "Prepare e-file package", "Resolve AI flag", "QA second review"];
 
-  // ---------- Return roster ----------
   function addReturn(r) { D.returns.push(r); }
 
   addReturn({ id: "r_maria", clientId: "u_maria", clientName: "Rahul Shetty", entity: "Individual (1040)",
@@ -274,7 +256,6 @@
     preparerId: "u_jenna", reviewerId: "u_tom", status: "gathering_docs", blocked: false,
     dueDate: "2026-03-20", openItems: 5, priority: "low", year: 2025 });
 
-  // Bulk out the roster a bit more for dashboard/document scale realism
   const extraNames = ["Darshit Patel","Rajat Naoghare","Hrishikesh Lokhande","Adwait Kaundanya","Yash Bhosale","Omkar Ghadge","Siddharth Kulkarni","Pranav Joshi","Rohan Sawant","Aryan Chavan","Karthik Iyer","Nikhil Rane"];
   extraNames.forEach((name, i) => {
     const statusPool = ["gathering_docs","in_preparation","needs_input","in_review","ready_to_sign","filed"];
@@ -291,11 +272,9 @@
     D.documents.push(...makeDocs(id, name, 12 + (i % 10), i + 3));
   });
 
-  // Give Sangram + a few staff-heavy returns a bigger document set for Challenge 09 scale
   D.documents.push(...makeDocs("r_david", "Sangram More", 26, 9));
   D.documents.push(...makeDocs("r_alvarez", "Manas Dalvi", 30, 15));
 
-  // ---------- Tasks derived from returns (Challenge 07) ----------
   let taskSeq = 1;
   D.returns.forEach((r, i) => {
     if (r.status === "accepted") return;
@@ -317,7 +296,6 @@
     }
   });
 
-  // ---------- Onboarding checklist for a brand-new client (Challenge 03) ----------
   D.onboardingChecklist = [
     { id: "ob_engage", label: "Sign your engagement letter", detail: "A quick e-signature authorizing Aditya to prepare your 2025 return.", done: true, minutes: 2 },
     { id: "ob_upload", label: "Upload your tax documents", detail: "W-2s, 1099s, and anything else you'd normally hand your preparer.", done: false, minutes: 10, current: true, hash: "#/documents" },
@@ -325,9 +303,6 @@
     { id: "ob_review", label: "Review & sign your return", detail: "Once Aditya finishes preparing it, you'll review and e-sign here.", done: false, minutes: 15, locked: true },
   ];
 
-  // ---------- Firm-wide AI flag queue (Challenge 10 — AI Insights) ----------
-  // Field-level detail lives in D.aiOutputs (Rahul's return, fully wired).
-  // These are additional return-level flags so the firm-wide queue has real volume.
   function firstDoc(rid) { return D.documents.find(d => d.returnId === rid); }
   D.aiFlags = [
     { id: "flag1", returnId: "r_maria", fieldId: "f_dividends", summary: "Qualified dividend split unreconciled", confidence: 74, status: "open",

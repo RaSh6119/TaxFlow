@@ -1,7 +1,3 @@
-/* ============================================================
-   Page: Challenge Map — landing page for this submission.
-   Not part of the "real" product; a navigation aid for reviewers.
-   ============================================================ */
 (function (App) {
   const U = App.Util;
 

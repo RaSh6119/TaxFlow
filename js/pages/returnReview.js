@@ -1,9 +1,3 @@
-/* ============================================================
-   Page: Return Review — Challenges 01, 08, 10
-   01: every field traces to a source doc, page, and calculation.
-   08: consistent affordances for AI-generated / verified / locked / editable.
-   10: AI panel explains what it did, why, evidence, and lets you correct it.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Role Architecture — Challenge 05 "Role-Aware Experiences"
-   One shell, six roles. This page documents the architecture and
-   lets you jump straight into any role to see it live.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

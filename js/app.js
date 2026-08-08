@@ -1,8 +1,3 @@
-/* ============================================================
-   TaxFlow — Router & Boot
-   Hash-based routing so every screen is deep-linkable
-   (Challenge 04). Route table maps hash patterns -> page module.
-   ============================================================ */
 (function (App) {
   const S = App.State, U = App.Util, C = App.Components;
 
@@ -57,7 +52,6 @@
     const params = match.params;
     const routeCtx = buildRouteCtx(match, hash);
 
-    // Track workflow context for the "jump back in" banner (Challenge 04)
     if (routeCtx.returnId) {
       const cw = S.state.currentWorkflow;
       if (!cw || cw.returnId !== routeCtx.returnId) {
@@ -80,11 +74,9 @@
     }
   }
 
-  // ---------- Global event delegation ----------
   function onClick(e) {
     const el = e.target.closest("[data-action]");
     if (!el) {
-      // clicking outside role menu closes it
       if (S.state.roleMenuOpen && !e.target.closest(".role-switch")) { S.state.roleMenuOpen = false; S.notify(); }
       return;
     }

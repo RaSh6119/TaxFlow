@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Design System — Challenge 08 "Clickable vs. Editable"
-   The affordance legend, plus live examples pulled from real
-   contexts elsewhere in the app so it isn't just one component.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data, C = App.Components;
 

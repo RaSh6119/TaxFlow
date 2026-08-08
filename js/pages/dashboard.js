@@ -1,13 +1,6 @@
-/* ============================================================
-   Page: Dashboard — Challenge 07 "An Actionable Dashboard"
-   Role-aware (Challenge 05): clients see their own status +
-   outstanding items; staff see a prioritized action queue driven
-   by a real (if simple) scoring function over the mock dataset.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 
-  // ---------- Real prioritization logic over mock data ----------
   function scoreTask(task) {
     let score = 0;
     if (task.blocked) score += 45;

@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: AI Insights — Challenge 10 "Trustworthy AI"
-   Firm-wide queue of AI flags: what it found, why, evidence,
-   uncertainty, and a one-click correction workflow.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

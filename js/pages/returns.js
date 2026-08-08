@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Returns List — Challenge 06 "Return Status & Progress"
-   One shared status model for every audience; staff get the full
-   roster with filters, clients are scoped to their own return(s).
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
   let searchText = "";
@@ -90,9 +85,7 @@
       const filterBtns = container.querySelectorAll("#status-filters button");
 
       function refresh() { tbody.innerHTML = rowsHtml(filterList(all)); wireRowClicks(); }
-      function wireRowClicks() {
-        // rows use data-action=go which is handled by the global delegated listener already.
-      }
+      function wireRowClicks() {}
 
       input.addEventListener("input", (e) => { searchText = e.target.value; refresh(); });
       filterBtns.forEach(btn => btn.addEventListener("click", () => {

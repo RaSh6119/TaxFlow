@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Messages — Challenge 02 "Client & CPA Collaboration"
-   Threads tied to documents/issues, internal vs. client-visible,
-   explicit ownership of the next action.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

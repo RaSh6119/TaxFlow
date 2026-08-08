@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Document Library — Challenge 09 "Complexity Made Navigable"
-   Hundreds of mock documents; search, filter, group, and a
-   "load more" pattern for progressive disclosure at scale.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

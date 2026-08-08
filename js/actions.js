@@ -1,9 +1,3 @@
-/* ============================================================
-   TaxFlow — Actions
-   Central handlers for data-action clicks across the whole app.
-   Every handler mutates App.State / App.Data (mock) then triggers
-   a re-render via App.State.notify() (wired in app.js).
-   ============================================================ */
 (function (App) {
   const A = {};
   const S = () => App.State;
@@ -101,7 +95,6 @@
     App.State.toast("Flag marked resolved.");
   };
 
-  // ---------- Onboarding (Challenge 03) ----------
   A["toggle-checklist"] = (ds) => {
     const item = D().onboardingChecklist?.find(i => i.id === ds.item);
     if (item) item.done = !item.done;
@@ -114,7 +107,6 @@
     App.State.toast("Welcome aboard! Your dashboard is ready.");
   };
 
-  // ---------- Messages (Challenge 02) ----------
   A["select-thread"] = (ds) => { S().state.ui = S().state.ui || {}; S().state.ui.activeThread = ds.thread; S().notify(); };
 
   A["send-message"] = (ds) => {
@@ -138,7 +130,6 @@
     App.State.toast("Thread marked resolved.");
   };
 
-  // ---------- Tasks / Dashboard (Challenge 07) ----------
   A["complete-task"] = (ds) => {
     D().tasks = D().tasks.filter(t => t.id !== ds.task);
     S().notify();
@@ -151,7 +142,6 @@
     S().notify();
   };
 
-  // ---------- Generic tab switch ----------
   A["set-tab"] = (ds) => {
     S().state.ui = S().state.ui || {};
     S().state.ui[ds.group] = ds.value;

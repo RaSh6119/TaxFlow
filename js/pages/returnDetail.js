@@ -1,8 +1,3 @@
-/* ============================================================
-   Page: Return Detail (Overview) — hub for Challenges 04 & 06
-   Status/progress front and center, plus a "linked items" panel
-   showing how documents/tasks/messages connect to this return.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 

@@ -1,9 +1,3 @@
-/* ============================================================
-   Page: Onboarding — Challenge 03 "Where to Start"
-   Goal: a brand-new client knows their next action within 10s.
-   One big hero card for the current step; everything else is
-   deliberately deferred/collapsed so it doesn't compete for attention.
-   ============================================================ */
 (function (App) {
   const U = App.Util, D = App.Data;
 
