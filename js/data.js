@@ -17,15 +17,15 @@
   ];
 
   D.users = [
-    { id: "u_maria", name: "Maria Chen", initials: "MC", role: "client_individual", isNew: true, returnIds: ["r_maria"] },
-    { id: "u_david", name: "David Okafor", initials: "DO", role: "client_business", isNew: false, returnIds: ["r_david"] },
-    { id: "u_priya", name: "Priya Nair", initials: "PN", role: "preparer", title: "Senior Tax Preparer",
+    { id: "u_maria", name: "Rahul Shetty", initials: "RS", role: "client_individual", isNew: true, returnIds: ["r_maria"] },
+    { id: "u_david", name: "Sangram More", initials: "SM", role: "client_business", isNew: false, returnIds: ["r_david"] },
+    { id: "u_priya", name: "Aditya Singh", initials: "AS", role: "preparer", title: "Senior Tax Preparer",
       extraRole: "client_individual", personalReturnId: "r_priya",
       assignedReturnIds: ["r_maria","r_david","r_singh","r_lopez","r_kim","r_alvarez","r_nguyen","r_brooks","r_priya"] },
-    { id: "u_tom", name: "Tom Reyes", initials: "TR", role: "reviewer", title: "Review Manager",
+    { id: "u_tom", name: "Saksham Khatwani", initials: "SK", role: "reviewer", title: "Review Manager",
       assignedReturnIds: ["r_singh","r_lopez","r_kim","r_alvarez","r_nguyen","r_brooks"] },
-    { id: "u_sam", name: "Sam Patel", initials: "SP", role: "admin", title: "Firm Administrator" },
-    { id: "u_jenna", name: "Jenna Lopez", initials: "JL", role: "seasonal", title: "Seasonal Preparer",
+    { id: "u_sam", name: "Gyanig Kumar", initials: "GK", role: "admin", title: "Firm Administrator" },
+    { id: "u_jenna", name: "Vamshi Pathi", initials: "VP", role: "seasonal", title: "Seasonal Preparer",
       assignedReturnIds: ["r_wells","r_diaz"] },
   ];
 
@@ -83,7 +83,7 @@
     return docs;
   }
 
-  // ---------- Flagship return: Maria Chen (individual, 1040) — deep traceability data ----------
+  // ---------- Flagship return: Rahul Shetty (individual, 1040) — deep traceability data ----------
   D.returns = [];
   D.documents = [];
   D.fields = [];
@@ -91,7 +91,7 @@
   D.threads = [];
   D.tasks = [];
 
-  // Maria's documents (hand-authored, small set, richly linked for Challenge 01)
+  // Rahul's documents (hand-authored, small set, richly linked for Challenge 01)
   const mariaDocs = [
     { id: "doc_w2_acme", returnId: "r_maria", name: "W-2 — Acme Robotics Inc.", type: "W-2", folder: "Income", pages: 1, uploadedBy: "client", uploadedAt: "2026-01-22", status: "reviewed", sizeKb: 210 },
     { id: "doc_w2_globex", returnId: "r_maria", name: "W-2 — Globex Contracting (part-year)", type: "W-2", folder: "Income", pages: 1, uploadedBy: "client", uploadedAt: "2026-01-24", status: "reviewed", sizeKb: 198 },
@@ -101,9 +101,9 @@
     { id: "doc_donation_redcross", returnId: "r_maria", name: "Charitable Donation Letter — Red Cross", type: "Charitable Donation Letter", folder: "Deductions", pages: 1, uploadedBy: "client", uploadedAt: "2026-01-28", status: "extracted", sizeKb: 88 },
     { id: "doc_prioryear_maria", returnId: "r_maria", name: "2024 Tax Return (Prior Year)", type: "Prior Year Return", folder: "Prior Year", pages: 9, uploadedBy: "firm", uploadedAt: "2026-01-15", status: "reviewed", sizeKb: 640 },
   ];
-  D.documents.push(...mariaDocs, ...makeDocs("r_maria", "Maria Chen", 14, 1));
+  D.documents.push(...mariaDocs, ...makeDocs("r_maria", "Rahul Shetty", 14, 1));
 
-  // Maria's return fields with full traceability + AI metadata (Challenge 01, 08, 10)
+  // Rahul's return fields with full traceability + AI metadata (Challenge 01, 08, 10)
   D.fields.push(
     {
       id: "f_wages", returnId: "r_maria", form: "Form 1040", line: "Line 1a — Wages, salaries, tips",
@@ -133,7 +133,7 @@
       id: "f_mortgage_int", returnId: "r_maria", form: "Schedule A", line: "Line 8a — Home mortgage interest",
       value: "$11,340", state: "verified", editable: false,
       sources: [{ docId: "doc_1098_wells", page: 1, box: "Box 1", region: { x: 50, y: 25, w: 30, h: 6 }, rawValue: "$11,340" }],
-      transformation: "Copied from Box 1. Verified by Priya Nair on Jan 30.",
+      transformation: "Copied from Box 1. Verified by Aditya Singh on Jan 30.",
       confidence: 99, verifiedBy: "u_priya", verifiedAt: "2026-01-30",
     },
     {
@@ -203,7 +203,7 @@
       id: "th_div_question", returnId: "r_maria", subject: "Question about your Schwab 1099-DIV",
       linkedDocId: "doc_1099div_schwab", status: "waiting_on_client", owner: "u_maria",
       messages: [
-        { id: "m1", author: "u_priya", internal: false, at: "2026-01-29 09:14", body: "Hi Maria — quick question on your Schwab 1099-DIV. Box 1b (qualified dividends) looks slightly cut off in the scan. Could you re-upload a clearer copy or confirm the amount is $1,540?" },
+        { id: "m1", author: "u_priya", internal: false, at: "2026-01-29 09:14", body: "Hi Rahul — quick question on your Schwab 1099-DIV. Box 1b (qualified dividends) looks slightly cut off in the scan. Could you re-upload a clearer copy or confirm the amount is $1,540?" },
         { id: "m2", author: "u_priya", internal: true, at: "2026-01-29 09:15", body: "Internal note: don't file until this is confirmed — affects the qualified dividend tax rate calc." },
       ],
     },
@@ -229,53 +229,53 @@
   // ---------- Return roster ----------
   function addReturn(r) { D.returns.push(r); }
 
-  addReturn({ id: "r_maria", clientId: "u_maria", clientName: "Maria Chen", entity: "Individual (1040)",
+  addReturn({ id: "r_maria", clientId: "u_maria", clientName: "Rahul Shetty", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "in_review", blocked: true,
     blockedReason: "Waiting on client to confirm 1099-DIV qualified dividend amount",
     dueDate: "2026-04-15", openItems: 1, priority: "high", year: 2025 });
 
-  addReturn({ id: "r_david", clientId: "u_david", clientName: "David Okafor", entity: "S-Corp (1120-S)",
+  addReturn({ id: "r_david", clientId: "u_david", clientName: "Sangram More", entity: "S-Corp (1120-S)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "gathering_docs", blocked: false,
     dueDate: "2026-03-15", openItems: 4, priority: "medium", year: 2025 });
 
-  addReturn({ id: "r_priya", clientId: "u_priya", clientName: "Priya Nair (personal)", entity: "Individual (1040)",
+  addReturn({ id: "r_priya", clientId: "u_priya", clientName: "Aditya Singh (personal)", entity: "Individual (1040)",
     preparerId: "u_tom", reviewerId: null, status: "not_started", blocked: false,
     dueDate: "2026-04-15", openItems: 0, priority: "low", year: 2025 });
 
-  addReturn({ id: "r_singh", clientId: null, clientName: "Anita Singh", entity: "Individual (1040)",
+  addReturn({ id: "r_singh", clientId: null, clientName: "Sanskar Mishra", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "needs_input", blocked: true,
     blockedReason: "Missing 1098-T for education credit", dueDate: "2026-02-20", openItems: 2, priority: "high", year: 2025 });
 
-  addReturn({ id: "r_lopez", clientId: null, clientName: "Marcus Lopez", entity: "Individual (1040)",
+  addReturn({ id: "r_lopez", clientId: null, clientName: "Aditya Dhuri", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "in_preparation", blocked: false,
     dueDate: "2026-03-01", openItems: 1, priority: "medium", year: 2025 });
 
-  addReturn({ id: "r_kim", clientId: null, clientName: "Grace Kim", entity: "Individual (1040)",
+  addReturn({ id: "r_kim", clientId: null, clientName: "Meet Surti", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "ready_to_sign", blocked: false,
     dueDate: "2026-02-10", openItems: 0, priority: "high", year: 2025 });
 
-  addReturn({ id: "r_alvarez", clientId: null, clientName: "Renata Alvarez", entity: "Partnership (1065)",
+  addReturn({ id: "r_alvarez", clientId: null, clientName: "Manas Dalvi", entity: "Partnership (1065)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "in_review", blocked: false,
     dueDate: "2026-03-15", openItems: 3, priority: "medium", year: 2025 });
 
-  addReturn({ id: "r_nguyen", clientId: null, clientName: "Tuan Nguyen", entity: "Individual (1040)",
+  addReturn({ id: "r_nguyen", clientId: null, clientName: "Kedar Deshpande", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "filed", blocked: false,
     dueDate: "2026-01-31", openItems: 0, priority: "low", year: 2025 });
 
-  addReturn({ id: "r_brooks", clientId: null, clientName: "Devon Brooks", entity: "Individual (1040)",
+  addReturn({ id: "r_brooks", clientId: null, clientName: "Jai Pagdhare", entity: "Individual (1040)",
     preparerId: "u_priya", reviewerId: "u_tom", status: "accepted", blocked: false,
     dueDate: "2026-01-20", openItems: 0, priority: "low", year: 2025 });
 
-  addReturn({ id: "r_wells", clientId: null, clientName: "Harriet Wells", entity: "Individual (1040)",
+  addReturn({ id: "r_wells", clientId: null, clientName: "Neel Korlekar", entity: "Individual (1040)",
     preparerId: "u_jenna", reviewerId: "u_tom", status: "needs_input", blocked: true,
     blockedReason: "Client has not responded to childcare credit question", dueDate: "2026-02-05", openItems: 2, priority: "high", year: 2025 });
 
-  addReturn({ id: "r_diaz", clientId: null, clientName: "Oscar Diaz", entity: "Individual (1040)",
+  addReturn({ id: "r_diaz", clientId: null, clientName: "Tejas Naik", entity: "Individual (1040)",
     preparerId: "u_jenna", reviewerId: "u_tom", status: "gathering_docs", blocked: false,
     dueDate: "2026-03-20", openItems: 5, priority: "low", year: 2025 });
 
   // Bulk out the roster a bit more for dashboard/document scale realism
-  const extraNames = ["Wei Zhang","Fatima Rahman","Connor Byrne","Isabella Rossi","Noah Whitfield","Amara Obi","Liu Yang","Sofia Petrova","Jamal Carter","Elena Petrov","Hiro Tanaka","Nina Kowalski"];
+  const extraNames = ["Darshit Patel","Rajat Naoghare","Hrishikesh Lokhande","Adwait Kaundanya","Yash Bhosale","Omkar Ghadge","Siddharth Kulkarni","Pranav Joshi","Rohan Sawant","Aryan Chavan","Karthik Iyer","Nikhil Rane"];
   extraNames.forEach((name, i) => {
     const statusPool = ["gathering_docs","in_preparation","needs_input","in_review","ready_to_sign","filed"];
     const id = "r_extra" + i;
@@ -291,9 +291,9 @@
     D.documents.push(...makeDocs(id, name, 12 + (i % 10), i + 3));
   });
 
-  // Give David + a few staff-heavy returns a bigger document set for Challenge 09 scale
-  D.documents.push(...makeDocs("r_david", "David Okafor", 26, 9));
-  D.documents.push(...makeDocs("r_alvarez", "Renata Alvarez", 30, 15));
+  // Give Sangram + a few staff-heavy returns a bigger document set for Challenge 09 scale
+  D.documents.push(...makeDocs("r_david", "Sangram More", 26, 9));
+  D.documents.push(...makeDocs("r_alvarez", "Manas Dalvi", 30, 15));
 
   // ---------- Tasks derived from returns (Challenge 07) ----------
   let taskSeq = 1;
@@ -319,14 +319,14 @@
 
   // ---------- Onboarding checklist for a brand-new client (Challenge 03) ----------
   D.onboardingChecklist = [
-    { id: "ob_engage", label: "Sign your engagement letter", detail: "A quick e-signature authorizing Priya to prepare your 2025 return.", done: true, minutes: 2 },
+    { id: "ob_engage", label: "Sign your engagement letter", detail: "A quick e-signature authorizing Aditya to prepare your 2025 return.", done: true, minutes: 2 },
     { id: "ob_upload", label: "Upload your tax documents", detail: "W-2s, 1099s, and anything else you'd normally hand your preparer.", done: false, minutes: 10, current: true, hash: "#/documents" },
     { id: "ob_questionnaire", label: "Answer a short questionnaire", detail: "Life changes, dependents, and deduction questions — about 12 questions.", done: false, minutes: 8 },
-    { id: "ob_review", label: "Review & sign your return", detail: "Once Priya finishes preparing it, you'll review and e-sign here.", done: false, minutes: 15, locked: true },
+    { id: "ob_review", label: "Review & sign your return", detail: "Once Aditya finishes preparing it, you'll review and e-sign here.", done: false, minutes: 15, locked: true },
   ];
 
   // ---------- Firm-wide AI flag queue (Challenge 10 — AI Insights) ----------
-  // Field-level detail lives in D.aiOutputs (Maria's return, fully wired).
+  // Field-level detail lives in D.aiOutputs (Rahul's return, fully wired).
   // These are additional return-level flags so the firm-wide queue has real volume.
   function firstDoc(rid) { return D.documents.find(d => d.returnId === rid); }
   D.aiFlags = [
@@ -350,7 +350,7 @@
       evidenceDoc: "doc_w2_acme", uncertainty: "Low", recommendedAction: "No action needed." },
     { id: "flag7", returnId: "r_kim", fieldId: null, summary: "Estimated tax payments may be underreported", confidence: 71, status: "resolved",
       why: "Bank statements show 3 estimated payments; only 2 were entered.",
-      evidenceDoc: firstDoc("r_kim")?.id, uncertainty: "Medium.", recommendedAction: "Reviewed and corrected by Tom Reyes on Jan 28." },
+      evidenceDoc: firstDoc("r_kim")?.id, uncertainty: "Medium.", recommendedAction: "Reviewed and corrected by Saksham Khatwani on Jan 28." },
     { id: "flag8", returnId: "r_lopez", fieldId: null, summary: "Home office square footage inconsistent with prior year", confidence: 64, status: "open",
       why: "Prior year claimed 180 sq ft; this year's documents suggest 240 sq ft with no explanation on file.",
       evidenceDoc: firstDoc("r_lopez")?.id, uncertainty: "Medium.", recommendedAction: "Ask client if they moved or remodeled." },

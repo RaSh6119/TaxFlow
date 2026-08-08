@@ -76,7 +76,7 @@
           ${tabs(ret.id, "review")}
           <div class="empty-state card card-pad">
             No field-level traceability data was seeded for this demo return.
-            <div class="mt-12"><a class="link-btn" data-action="go" data-hash="#/returns/r_maria/review">Open Maria Chen's return to see full traceability →</a></div>
+            <div class="mt-12"><a class="link-btn" data-action="go" data-hash="#/returns/r_maria/review">Open Rahul Shetty's return to see full traceability →</a></div>
           </div>
         `;
       }

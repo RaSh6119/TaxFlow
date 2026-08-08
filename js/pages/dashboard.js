@@ -152,7 +152,7 @@
             </div>` : ""}
           <div class="row gap-8 mt-16">
             <button class="btn btn-primary" data-action="go" data-hash="#/returns/${ret.id}">View my return</button>
-            <button class="btn btn-secondary" data-action="go" data-hash="#/messages/${ret.id}">Message Priya</button>
+            <button class="btn btn-secondary" data-action="go" data-hash="#/messages/${ret.id}">Message ${U.esc(D.getUser(ret.preparerId).name.split(" ")[0])}</button>
           </div>
         </div>
       </div>

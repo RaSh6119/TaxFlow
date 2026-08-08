@@ -65,13 +65,13 @@
           <div class="badge tone-violet mb-12">Multi-role scenario</div>
           <div class="h3 mb-8">A firm employee with a personal return</div>
           <div class="small muted mb-16" style="max-width:640px">
-            Priya Nair is a Senior Tax Preparer at the firm — and also a client, because the firm prepares her
-            personal return. Rather than a second login, she switches "hats" from the same account menu.
-            The shell re-renders around whichever context she's in: as a preparer she sees the full firm queue;
-            as a client, she sees exactly what Maria or David would see for her own return, nothing more.
+            Aditya Singh is a Senior Tax Preparer at the firm — and also a client, because the firm prepares his
+            personal return. Rather than a second login, he switches "hats" from the same account menu.
+            The shell re-renders around whichever context he's in: as a preparer he sees the full firm queue;
+            as a client, he sees exactly what Rahul or Sangram would see for his own return, nothing more.
           </div>
           <div class="row gap-8">
-            <button class="btn btn-primary btn-sm" data-action="switch-user" data-user="u_priya">Log in as Priya</button>
+            <button class="btn btn-primary btn-sm" data-action="switch-user" data-user="u_priya">Log in as Aditya</button>
             <span class="tiny muted" style="align-self:center">then use the account menu to toggle "Working as: Preparer" vs "Working as: Client"</span>
           </div>
         </div>

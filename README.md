@@ -1,11 +1,11 @@
 # TaxFlow
 
-A single working prototype covering all 10 challenges from the case study, built as one connected
-product (not ten separate demos) — a client & CPA tax platform designed from scratch.
+A single working frontend covering all 10 challenges from the case study for a company's recruitment drive, built as one connected
+product : a client & CPA tax platform designed from scratch.
 
 ## Running it
 
-No build step, no install. Open `index.html` directly in a browser, or serve the folder with any
+No build and install needed. Open `index.html` directly in a browser, or serve the folder with any
 static server, e.g.:
 
 ```
@@ -17,8 +17,8 @@ python3 -m http.server 8000
 It lands on **Challenge Map** (`#/challenges`) — an index page (not part of the "real" product)
 that links straight into the primary screen for each of the 10 challenges. From there:
 
-- **Enter as Preparer (Priya)** — the firm-side experience: dashboard, returns, documents, AI insights.
-- **Enter as New Client (Maria)** — the first-time client onboarding flow (Challenge 03).
+- **Enter as Preparer (Aditya)** — the firm-side experience: dashboard, returns, documents, AI insights.
+- **Enter as New Client (Rahul)** — the first-time client onboarding flow (Challenge 03).
 - The **account switcher** (top right, on every screen) swaps between all 6 seeded users/roles at any time.
 
 ## Why plain JS instead of React/Vite
@@ -36,11 +36,11 @@ described below is genuinely wired up, not a static mock.
 |---|---|---|---|
 | 01 | Source Document Traceability | `#/returns/r_maria/review` | Click any field → right panel shows the source doc page (highlighted region), the raw extracted value, the calculation applied, and a step-by-step trail. |
 | 02 | Client & CPA Collaboration | `#/messages` | Threads tied to a document or issue; internal notes (amber, dashed) vs. client-visible messages; thread status shows who owns the next reply. |
-| 03 | Where to Start | `#/onboarding` | Maria's first login — one large "next step" card, a deferred checklist, nothing else competing for attention. |
+| 03 | Where to Start | `#/onboarding` | Rahul's first login — one large "next step" card, a deferred checklist, nothing else competing for attention. |
 | 04 | Getting Lost in the App | everywhere | Breadcrumbs in the topbar, a "Linked items" panel on the return overview connecting docs/threads/AI flags, and a "You were working on…" banner that appears when you leave a return mid-task and can jump you back in. |
-| 05 | Role-Aware Experiences | `#/roles` + account switcher | Six roles, one shell; permission matrix; the Priya Nair account demonstrates a firm employee who is also a client (switch "Working as" in her account menu). |
+| 05 | Role-Aware Experiences | `#/roles` + account switcher | Six roles, one shell; permission matrix; the Aditya Singh account demonstrates a firm employee who is also a client (switch "Working as" in their account menu). |
 | 06 | Return Status & Progress | `#/returns` | One status model (`js/data.js → D.statuses`) drives every badge and pipeline bar in the app — client and staff see the same label, staff additionally see the blocking reason. |
-| 07 | An Actionable Dashboard | `#/dashboard` (as Priya/Tom) | A real scoring function (`scoreTask` in `js/pages/dashboard.js`) ranks tasks by urgency + blocked status + priority. Managers (reviewer/admin) get a My Queue / Team Queue toggle. |
+| 07 | An Actionable Dashboard | `#/dashboard` (as Aditya/Saksham) | A real scoring function (`scoreTask` in `js/pages/dashboard.js`) ranks tasks by urgency + blocked status + priority. Managers (reviewer/admin) get a My Queue / Team Queue toggle. |
 | 08 | Clickable vs. Editable | `#/design-system` | The legend, plus the same chips/underline/lock system reused live in Return Review, Documents, and Messages. |
 | 09 | Complexity Made Navigable | `#/documents` | ~270 fabricated documents across 23 returns. Search, folder/status filters, group-by-client, and a "load more" pattern instead of rendering everything at once. |
 | 10 | Trustworthy AI | `#/ai-insights` + the AI panel in Return Review | What the AI did, why, its evidence (linked to the actual source doc), stated uncertainty, a recommended action, and Accept / Correct / Dismiss controls. |

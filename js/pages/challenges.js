@@ -30,8 +30,8 @@
           for one of the ten challenges — everything is one connected app, not ten separate demos.
         </div>
         <div class="row gap-8 mt-16">
-          <button class="btn btn-primary" data-action="switch-user" data-user="u_priya" data-hash="#/dashboard">Enter as Preparer (Priya)</button>
-          <button class="btn btn-secondary" data-action="switch-user" data-user="u_maria" data-hash="#/onboarding">Enter as New Client (Maria)</button>
+          <button class="btn btn-primary" data-action="switch-user" data-user="u_priya" data-hash="#/dashboard">Enter as Preparer (Aditya)</button>
+          <button class="btn btn-secondary" data-action="switch-user" data-user="u_maria" data-hash="#/onboarding">Enter as New Client (Rahul)</button>
         </div>
       </div>
       <div class="grid-2">

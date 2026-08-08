@@ -59,7 +59,7 @@
             <div class="card-pad">
               <div class="badge tone-green mb-12">${U.icon("check")} All caught up</div>
               <div class="h2 mb-8">You've completed everything on your end.</div>
-              <div class="muted mb-16">Priya will reach out if anything else is needed. Head to your dashboard to track progress.</div>
+              <div class="muted mb-16">Aditya will reach out if anything else is needed. Head to your dashboard to track progress.</div>
               <button class="btn btn-primary" data-action="finish-onboarding">Continue to your dashboard</button>
             </div>
           </div>
